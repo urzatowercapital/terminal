@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URZA TOWER CAPITAL — MTG TERMINAL</title>
+    <link rel="stylesheet" href="static/css/bloomberg.css">
+</head>
+<body>
+
+    <!-- LOGIN (no auth: Enter or Login drops into the terminal) -->
+    <div id="loginOverlay">
+        <div class="login-panel">
+            <div class="login-hint">PRESS &lt;ENTER&gt; OR LOGIN TO CONNECT</div>
+            <div class="login-brand">Urza Tower <span>ANYWHERE</span></div>
+            <div class="login-sub">URZA TOWER CAPITAL LLC — MTG PROFESSIONAL SERVICE</div>
+            <div class="login-grid">
+                <div class="login-field">
+                    <button class="login-btn login-btn-big" id="loginBtn">ENTER THE TOWER &lt;GO&gt;</button>
+                    <div class="login-links">
+                        <a id="loginContact">&#9742; Contact Us</a>
+                        <a id="loginCreate">&#128100; Create a New Login</a>
+                    </div>
+                </div>
+                <div class="login-langs">
+                    <div class="lh">Select Language for Analytics and Communication Functions:</div>
+                    <span class="sel">&#10003; English</span> &nbsp; Espa&ntilde;ol &nbsp; Portugu&ecirc;s<br>
+                    Fran&ccedil;ais &nbsp; Italiano &nbsp; Deutsch &nbsp; Phyrexian<br><br>
+                    To customize your news language experience type LANG&lt;Go&gt; after login.
+                </div>
+            </div>
+            <div class="login-serial">S/N 093-1993-0 | SID URZAMISHRA-1 | Version 2026-09 | Netid P163</div>
+            <div class="login-disclaimer">The URZA TOWER MTG PROFESSIONAL service and data products are owned and
+            distributed by Urza Tower Capital LLC, a fictional entity. Not affiliated with Bloomberg L.P., Wizards of
+            the Coast, TCGplayer, Card Kingdom or Cardmarket. All prices are public vendor prices (MTGJSON daily
+            feeds, Card Kingdom pricelist, TCGplayer price points, ECB reference FX). Nothing on this terminal is
+            investment advice; no information herein constitutes a solicitation of the purchase or sale of cardboard.</div>
+        </div>
+    </div>
+
+    <!-- HARD KEYS -->
+    <div class="bbg-top-buttons-bar">
+        <button class="bbg-func-key key-red" data-func="CANCEL" title="Esc">CANCEL</button>
+        <button class="bbg-func-key key-green" data-func="HELP">HELP</button>
+        <button class="bbg-func-key key-green" data-func="SEARCH">SEARCH</button>
+        <button class="bbg-func-key key-green" data-func="NEWS">NEWS</button>
+        <button class="bbg-func-key key-green" data-func="QUOTE">QUOTE</button>
+        <button class="bbg-func-key key-green" data-func="PORT">PORT</button>
+        <button class="bbg-func-key key-green" data-func="MENU">MENU</button>
+        <button class="bbg-func-key key-green" data-func="PRINT">PRINT</button>
+        <button class="bbg-func-key key-green" data-func="PGBA" title="Alt+Left">PG BA</button>
+        <button class="bbg-func-key key-green" data-func="PGFW" title="Alt+Right">PG FW</button>
+    </div>
+
+    <!-- COMMAND LINE -->
+    <header class="bbg-header">
+        <div class="bbg-top-info">
+            <div>
+                <span class="bbg-help-key">&lt;HELP&gt;</span> for the function directory,
+                <span class="bbg-help-key">&lt;MENU&gt;</span> for related functions,
+                <span class="bbg-help-key">&lt;number&gt; &lt;GO&gt;</span> opens a numbered item.
+            </div>
+            <div>
+                URZA TOWER CAPITAL LP | <span id="statusTime" style="color:#fff;">--:--:--</span> |
+                <span id="statusData" style="color:var(--green);">CONNECTING</span>
+            </div>
+        </div>
+        <div class="bbg-command-strip">
+            <div class="bbg-prompt-tag">COMMAND &lt;GO&gt;</div>
+            <div class="bbg-input-wrapper">
+                <input type="text" id="cmdInput" class="bbg-cmd-input" autocomplete="off" spellcheck="false"
+                       placeholder="MH3 PBX GP  |  RAGAVAN DES  |  WEI  |  MOV  |  EQS  |  COMP MTGCOMP,MTGRL,MH3  |  HELP">
+                <div id="secfDrop" class="secf-drop" hidden></div>
+            </div>
+            <button id="goBtn" class="bbg-go-btn">&lt;GO&gt;</button>
+        </div>
+        <div id="msgLine" class="bbg-msg-line"></div>
+    </header>
+
+    <!-- LIVE RIBBON (real index levels) -->
+    <div class="bbg-ticker-ribbon" id="ribbon"><div class="ticker-item"><span class="ticker-name">LOADING INDICES…</span></div></div>
+
+    <!-- PRIMARY FUNCTION TABS -->
+    <nav class="bbg-nav-bar" id="navBar">
+        <button class="bbg-tab-btn" data-fn="WEI"><span class="tab-num">F1</span> WEI INDICES</button>
+        <button class="bbg-tab-btn" data-fn="MOV"><span class="tab-num">F2</span> MOV MOVERS</button>
+        <button class="bbg-tab-btn" data-fn="COMMOD"><span class="tab-num">F3</span> COMMOD BOARD</button>
+        <button class="bbg-tab-btn" data-fn="EQS"><span class="tab-num">F4</span> EQS SEALED</button>
+        <button class="bbg-tab-btn" data-fn="DECK"><span class="tab-num">F5</span> DECK PRICER</button>
+        <button class="bbg-tab-btn" data-fn="CARDS"><span class="tab-num">F6</span> CARDS SINGLES</button>
+        <button class="bbg-tab-btn" data-fn="DES"><span class="tab-num">F7</span> DES SECURITY</button>
+        <button class="bbg-tab-btn" data-fn="GP"><span class="tab-num">F8</span> GP CHART</button>
+        <button class="bbg-tab-btn" data-fn="TOP"><span class="tab-num">F9</span> TOP NEWS</button>
+        <button class="bbg-tab-btn" data-fn="ECO"><span class="tab-num">F10</span> CALENDAR RELEASE</button>
+        <button class="bbg-tab-btn" data-fn="LP"><span class="tab-num">F11</span> LP LAUNCHPAD</button>
+        <button class="bbg-tab-btn" data-fn="FLAV"><span class="tab-num">F12</span> FLAVOR</button>
+        <button class="bbg-tab-btn" data-fn="HELP"><span class="tab-num">…</span> MORE</button>
+    </nav>
+
+    <!-- WORKSPACE: one function screen at a time -->
+    <main class="bbg-workspace">
+        <section id="screen" class="bbg-tab-content active"></section>
+    </main>
+
+    <footer class="bbg-footer">
+        <div id="footerKeys">
+            <span class="footer-key">F1</span> WEI |
+            <span class="footer-key">F2</span> MOV |
+            <span class="footer-key">F3</span> COMMOD |
+            <span class="footer-key">F4</span> EQS |
+            <span class="footer-key">F5</span> DECK |
+            <span class="footer-key">F6</span> CARDS |
+            <span class="footer-key">F7</span> DES |
+            <span class="footer-key">F8</span> GP |
+            <span class="footer-key">F9</span> TOP |
+            <span class="footer-key">ESC</span> CANCEL
+        </div>
+        <div id="footerProvenance">URZA TOWER CAPITAL LP — public vendor prices only, no terminal data</div>
+    </footer>
+
+    <script src="static/js/charts.js"></script>
+    <script src="static/js/terminal.js"></script>
+</body>
+</html>
